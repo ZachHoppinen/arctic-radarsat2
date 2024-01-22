@@ -1,0 +1,5 @@
+/data
+/Gamma_demo_RSAT2_multi_resolution
+logs/
+*.pyc
+*DS_Store
