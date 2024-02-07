@@ -5,12 +5,14 @@ import sys
 from pathlib import Path
 import logging
 import re
+from itertools import combinations
 
 import pandas as pd
 import py_gamma as pg
 
 from radarsat_funcs import force_delete_directory, create_png, parse_coords, create_par_fp,\
     Capturing, parse_bounds, execute, get_width
+from run_isp import gamma_radarsat2_interferogram
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -54,23 +56,15 @@ for loc in meta['AOI '].unique():
     loc_dir.mkdir(exist_ok = True)
 
     for orbit in loc_fps.Beam.unique():
+
         fps = loc_fps[loc_fps['Beam'] == orbit]
+
         orbit_dir = loc_dir.joinpath(orbit)
-        orbit_dir.joinpath(orbit)
+        orbit_dir.mkdir(exist_ok=True)
 
-        
-
-""".
-
-test_dir = Path("/data/test")
-image_dir = test_dir.joinpath('images')
-input_dir = test_dir.joinpath('inputs')
-proc_dir = test_dir.joinpath('processing')
-out_dir = test_dir.joinpath('outputs')
-
-for d in [input_dir, image_dir, proc_dir, out_dir]:
-    force_delete_directory(d)
-    d.mkdir(exist_ok = True)
-"""
-
-dates = {}
+        cc = list(combinations(fps['Acq. Date'],2))
+        for c1, c2 in cc:
+            out_dir = orbit_dir.joinpath(f'{c1.date()}_{c2.date()}')
+            d1 = fps[fps['Acq. Date'] == c1].iloc[0].dir_fp
+            d2 = fps[fps['Acq. Date'] == c2].iloc[0].dir_fp
+            gamma_radarsat2_interferogram(d1, d2, meta, dems, out_dir)
