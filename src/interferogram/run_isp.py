@@ -31,7 +31,7 @@ dir2 = Path("/data/nga/RS2_OK149295_PK1356403_DK1321368_U16_20231020_214550_HH_S
 dems = {'Pituffik': Path('/data/nga/dem/Pituffik.tif'), 'Oliktok': Path('/data/nga/dem/Oliktok.tif'),\
      'Utqiagvik': Path('/data/nga/dem/Utqiagvik.tif'), 'Toolik': Path('/data/nga/dem/Toolik.tif')}
 
-test_dir = Path("/home/ubuntu/arctic-radarsat2/data/test/")
+test_dir = Path("/data/test")
 image_dir = test_dir.joinpath('images')
 input_dir = test_dir.joinpath('inputs')
 proc_dir = test_dir.joinpath('processing')
