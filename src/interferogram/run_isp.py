@@ -1,4 +1,4 @@
-#!/home/rdcrlzh1s/miniforge3/envs/gamma/bin/python
+#!/home/ubuntu/miniconda3/envs/gamma/bin/python
 
 import os
 import sys
@@ -22,16 +22,16 @@ logger.addHandler(stdout)
 interactive = 0
 overwrite = False
 
-# dir1 = Path("/data/nga/RS2_OK149295_PK1356401_DK1321366_U16_20230926_214549_HH_SLC")
-# dir2 = Path("/data/nga/RS2_OK149295_PK1356403_DK1321368_U16_20231020_214550_HH_SLC")
+dir1 = Path("/data/nga/RS2_OK149295_PK1356401_DK1321366_U16_20230926_214549_HH_SLC")
+dir2 = Path("/data/nga/RS2_OK149295_PK1356403_DK1321368_U16_20231020_214550_HH_SLC")
 # dir1 = Path("/data/nga/RS2_OK149295_PK1356402_DK1321367_U18_20231013_215000_HH_SLC")
 # dir2 = Path("/data/nga/RS2_OK149295_PK1356400_DK1321365_U18_20230919_215000_HH_SLC")
-dir1 = Path("/data/nga/RS2_OK149290_PK1356357_DK1321325_SLA76_20230602_025909_HH_SLC")
-dir2 = Path("/data/nga/RS2_OK149290_PK1356371_DK1321339_SLA76_20230813_025906_HH_SLC")
+# dir1 = Path("/data/nga/RS2_OK149290_PK1356357_DK1321325_SLA76_20230602_025909_HH_SLC")
+# dir2 = Path("/data/nga/RS2_OK149290_PK1356371_DK1321339_SLA76_20230813_025906_HH_SLC")
 dems = {'Pituffik': Path('/data/nga/dem/Pituffik.tif'), 'Oliktok': Path('/data/nga/dem/Oliktok.tif'),\
      'Utqiagvik': Path('/data/nga/dem/Utqiagvik.tif'), 'Toolik': Path('/data/nga/dem/Toolik.tif')}
 
-test_dir = Path("/home/rdcrlzh1s/radarsat/data/test3")
+test_dir = Path("/home/ubuntu/arctic-radarsat2/data/test/")
 image_dir = test_dir.joinpath('images')
 input_dir = test_dir.joinpath('inputs')
 proc_dir = test_dir.joinpath('processing')
@@ -41,7 +41,7 @@ for d in [input_dir, image_dir, proc_dir, out_dir]:
     force_delete_directory(d)
     d.mkdir(exist_ok = True)
 
-meta = pd.read_excel(Path('/home/rdcrlzh1s/radarsat/data/RS2_collection.xlsx'), parse_dates=['Acq. Date'])
+meta = pd.read_excel(Path('/home/ubuntu/arctic-radarsat2/data/RS2_collection.xlsx'), parse_dates=['Acq. Date'])
 dates = {}
 
 #<================================== Convert radarsat .tifs to Gamma SCOMPLEX images =========================================>

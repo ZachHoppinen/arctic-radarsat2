@@ -1,0 +1,8 @@
+name: gamma
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - pandas
+  - matplotlib
+  - openpyxl
