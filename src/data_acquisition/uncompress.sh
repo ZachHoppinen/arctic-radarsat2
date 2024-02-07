@@ -9,12 +9,18 @@ fi
 
 OLDIFS=$IFS
 
-IN_DIR='/data/nga/raw/*.zip'
+IN_DIR='/data/GS-L/NGA/*.zip'
 OUT_DIR='/data/nga/'
 
-ZIPS=$(find $IN_DIR -name "*.zip")
+if test -f /data/GS-L/NGA/; then
+  echo "File exists."
+fi
 
-for ZIP in /data/nga/raw/*.zip; do
+ZIPS=$(find $IN_DIR -name "*.zip")
+# echo $ZIPS
+
+for ZIP in /data/GS-L/NGA/*.zip; do
+    echo $ZIP
     [ -e "$ZIP" ] || continue
     IFS="_" arr=($ZIP)
     IFS=" "
