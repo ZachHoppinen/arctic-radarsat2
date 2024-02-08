@@ -49,7 +49,7 @@ dems = {'Pituffik': Path('/data/nga/dem/Pituffik.tif'), 'Oliktok': Path('/data/n
 
 for loc in meta['AOI '].unique():
     
-    if loc != 'Pituffik': continue
+    if loc == 'Pituffik': continue
     loc_fps = meta[meta['AOI '] == loc]
 
     loc_dir = in_dir.joinpath(loc)
